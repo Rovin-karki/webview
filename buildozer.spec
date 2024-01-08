@@ -18,7 +18,7 @@ package.domain = org.test
 source.dir = .
 
 # (list) Source files to include (leave empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,recipe,sh,pywebview_recipe
+source.include_exts = py,png,jpg,kv,atlas,recipe,sh,pywebview
 
 # (list) List of inclusions using pattern matching
 # (list) List of inclusions using pattern matching
