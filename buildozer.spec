@@ -22,7 +22,7 @@ source.include_exts = py,png,jpg,kv,atlas,recipe,sh,pywebview_recipe
 
 # (list) List of inclusions using pattern matching
 # (list) List of inclusions using pattern matching
-source.include_patterns = recipes/pywebview_recipe/*
+source.include_patterns = recipes/pywebview/*
 
 
 # (list) Source files to exclude (leave empty to not exclude anything)
@@ -44,7 +44,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3==3.8.0,hostpython3==3.8.0,kivy,pywebview_recipe
+requirements = python3==3.8.0,hostpython3==3.8.0,kivy,pywebview
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
