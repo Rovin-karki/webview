@@ -18,11 +18,11 @@ package.domain = org.test
 source.dir = .
 
 # (list) Source files to include (leave empty to include all the files)
-source.include_exts = py,png,jpg,kv,atlas,recipe,sh,pywebview
+source.include_exts = py,png,jpg,kv,atlas
 
 # (list) List of inclusions using pattern matching
 # (list) List of inclusions using pattern matching
-source.include_patterns = recipes/pywebview/*
+#source.include_patterns = recipes/pywebview/*
 
 
 # (list) Source files to exclude (leave empty to not exclude anything)
@@ -44,9 +44,8 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3==3.8.0,hostpython3==3.8.0,kivy,pywebview[cef]
-# (list) Application android.arch requirements
-android.arch = x86_64
+requirements = python3==3.8.0,hostpython3==3.8.0,pywebview
+
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
@@ -78,7 +77,7 @@ orientation = portrait
 # author = © Copyright Info
 
 # Kivy version to use
-osx.kivy_version = 2.2.0
+#osx.kivy_version = 2.2.0
 
 #
 # Android specific
