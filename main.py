@@ -3,11 +3,11 @@ import webview
 class SimpleApp(App):
     def build(self):
             return
-# def change_title(window):
-#   window.change_title('pywebview whoa')
+def change_title(window):
+   window.change_title('pywebview whoa')
 
 window = webview.create_window('pywebview wow', 'https://pywebview.flowrl.com')
-webview.start()
+webview.start(gui='kivy', debug=False)
     
 # Run the app
 if __name__ == '__main__':
