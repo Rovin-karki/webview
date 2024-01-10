@@ -42,7 +42,7 @@ version = 0.1
 
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
-requirements = python3==3.8.0,hostpython3==3.8.0,pywebview
+requirements = python3==3.8.0,hostpython3==3.8.0,flask
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
@@ -103,8 +103,27 @@ fullscreen = 0
 
 # (list) Permissions
 # (See https://python-for-android.readthedocs.io/en/latest/buildoptions/#build-options-1 for all the supported syntaxes and properties)
-android.permissions = android.permission.INTERNET, (name=android.permission.WRITE_EXTERNAL_STORAGE;maxSdkVersion=18)
+android.permissions = INTERNET, READ_EXTERNAL_STORAGE, WRITE_EXTERNAL_STORAGE
+#android.arch = armeabi-v7a
 
+# (str) python-for-android branch to use, defaults to master
+p4a.branch = develop
+
+
+# (str) Bootstrap to use for android builds
+p4a.bootstrap = webview
+
+# (int) port number to specify an explicit --port= p4a argument (eg for bootstrap flask)
+p4a.port = 8080
+
+
+[buildozer]
+
+# (int) Log level (0 = error only, 1 = info, 2 = debug (with command output))
+log_level = 2
+
+# (int) Display warning if buildozer is run as root (0 = False, 1 = True)
+warn_on_root = 1
 # (list) features (adds uses-feature -tags to manifest)
 #android.features = android.hardware.usb.host
 
