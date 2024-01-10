@@ -41,7 +41,7 @@ version = 0.1
 # version.filename = %(source.dir)s/main.py
 
 # (list) Application requirements
-# comma separated e.g. requirements = sqlite3,kivy
+# comma separated e.g. requirements = sqlite3,kivy,kivymd,webview-android
 requirements = python3==3.8.0,hostpython3==3.8.0,kivy,pywebview
 
 # (str) Custom source folders for requirements
