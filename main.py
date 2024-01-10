@@ -1,30 +1,26 @@
 from kivy.app import App
-from kivy.uix.button import Button
-from kivy.uix.label import Label
 from kivy.uix.boxlayout import BoxLayout
+from kivy.uix.button import Button
+import webview
 
-
-class SimpleKivyApp(App):
+class BoxLayoutApp(App):
     def build(self):
-        # Creating a BoxLayout as the root widget
-        layout = BoxLayout(orientation='vertical', spacing=10, padding=10)
+        # Create a BoxLayout with vertical orientation
+        box_layout = BoxLayout(orientation='vertical', spacing=10, padding=10)
 
-        # Creating a label
-        self.label = Label(text="Hello, Kivy!")
+        # Create a button to open the webview window
+        webview_button = Button(text='Open Webview')
+        webview_button.bind(on_press=self.open_webview)
 
-        # Creating a button
-        button = Button(text="Click me!", on_press=self.on_button_click)
+        # Add the button to the BoxLayout
+        box_layout.add_widget(webview_button)
 
-        # Adding widgets to the layout
-        layout.add_widget(self.label)
-        layout.add_widget(button)
+        return box_layout
 
-        return layout
-
-    def on_button_click(self, instance):
-        # Change the label text when the button is clicked
-        self.label.text = "Button clicked!"
-
+    def open_webview(self, instance):
+        # Code to create and start the webview window
+        webview.create_window('Hello world', 'https://pywebview.flowrl.com/')
+        webview.start()
 
 if __name__ == '__main__':
-    SimpleKivyApp().run()
+    BoxLayoutApp().run()
