@@ -1,27 +1,28 @@
-from kivy.uix.widget import Widget
-from kivymd.app import MDApp
-from webview import WebView
-from kivy.lang.builder import Builder
-from kivymd.uix.button import MDFlatButton
-from kivymd.uix.screen import MDScreen
+import flet as ft
 
-Builder.load_string("""
-<MyWebView>
-    MDFlatButton:
-        text: "Push"
-        pos_hint: {"center_x": .5, "center_y": .4}
-        on_press: root.Push()
-""")
+def main(page: ft.Page):
+    page.title = "Flet counter example"
+    page.vertical_alignment = ft.MainAxisAlignment.CENTER
 
-class MyWebView(MDScreen):
-    def Push(self):
-        WebView("https://www.google.com")
+    txt_number = ft.TextField(value="0", text_align=ft.TextAlign.RIGHT, width=100)
 
+    def minus_click(e):
+        txt_number.value = str(int(txt_number.value) - 1)
+        page.update()
 
-class MyWebApp(MDApp):
-    def build(self):
-        return MyWebView()
+    def plus_click(e):
+        txt_number.value = str(int(txt_number.value) + 1)
+        page.update()
 
+    page.add(
+        ft.Row(
+            [
+                ft.IconButton(ft.icons.REMOVE, on_click=minus_click),
+                txt_number,
+                ft.IconButton(ft.icons.ADD, on_click=plus_click),
+            ],
+            alignment=ft.MainAxisAlignment.CENTER,
+        )
+    )
 
-if __name__ == '__main__':
-    MyWebApp().run()
+ft.app(target=main)
