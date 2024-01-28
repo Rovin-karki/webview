@@ -1,28 +1,26 @@
-import flet as ft
+from kivy.app import App
+from kivy.uix.button import Button
+from kivy.uix.boxlayout import BoxLayout
 
-def main(page: ft.Page):
-    page.title = "Flet counter example"
-    page.vertical_alignment = ft.MainAxisAlignment.CENTER
 
-    txt_number = ft.TextField(value="0", text_align=ft.TextAlign.RIGHT, width=100)
+class SimpleApp(App):
+    def build(self):
+        # Create a layout
+        layout = BoxLayout(orientation='vertical', spacing=10, padding=10)
 
-    def minus_click(e):
-        txt_number.value = str(int(txt_number.value) - 1)
-        page.update()
+        # Create a button
+        button = Button(text="Click me!", on_press=self.on_button_press)
 
-    def plus_click(e):
-        txt_number.value = str(int(txt_number.value) + 1)
-        page.update()
+        # Add the button to the layout
+        layout.add_widget(button)
 
-    page.add(
-        ft.Row(
-            [
-                ft.IconButton(ft.icons.REMOVE, on_click=minus_click),
-                txt_number,
-                ft.IconButton(ft.icons.ADD, on_click=plus_click),
-            ],
-            alignment=ft.MainAxisAlignment.CENTER,
-        )
-    )
+        # Return the layout as the root widget
+        return layout
 
-ft.app(target=main)
+    def on_button_press(self, instance):
+        # Define the button press behavior
+        print("Button pressed!")
+
+
+if __name__ == '__main__':
+    SimpleApp().run()
