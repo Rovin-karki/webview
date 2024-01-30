@@ -1,26 +1,33 @@
 from kivy.app import App
-from kivy.uix.button import Button
-from kivy.uix.boxlayout import BoxLayout
+from jnius import autoclass
+from kivy.clock import Clock
+from android.runnable import run_on_ui_thread
+from kivy.uix.widget import Widget
+
+WebView = autoclass('android.webkit.WebView')
+WebViewClient = autoclass('android.webkit.WebViewClient')
+activity = autoclass('org.kivy.android.PythonActivity').mActivity
+
+@run_on_ui_thread
+def create_webview(*args):
+	webview = WebView(activity)
+	webview.getSettings().setJavaScriptEnabled(True)
+	wvc = WebViewClient();
+	webview.setWebViewClient(wvc);
+	activity.setContentView(webview)
+	webview.loadUrl('https://ｗｗｗ.baidu.com')
 
 
-class SimpleApp(App):
-    def build(self):
-        # Create a layout
-        layout = BoxLayout(orientation='vertical', spacing=10, padding=10)
+class Wv(Widget):
+	def __init__(self, **kwargs):
+		super().__init__(**kwargs)
+		self.__functionstable__ = {}
+		Clock.schedule_once(create_webview, 0)
 
-        # Create a button
-        button = Button(text="Click me!", on_press=self.on_button_press)
 
-        # Add the button to the layout
-        layout.add_widget(button)
-
-        # Return the layout as the root widget
-        return layout
-
-    def on_button_press(self, instance):
-        # Define the button press behavior
-        print("Button pressed!")
-
+class ServiceApp(App):
+	def build(self):
+		return Wv()
 
 if __name__ == '__main__':
-    SimpleApp().run()
+    ServiceApp().run()
